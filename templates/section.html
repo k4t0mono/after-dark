@@ -1,0 +1,23 @@
+{% extends "index.html" %}
+
+{% block content %}
+    {% block header %}
+        {{ super() }}
+    {% endblock header %}
+
+    <header>
+        <h1>
+            {% if config.extra.after_dark_title %}
+                {{ config.extra.after_dark_title }} --
+            {% endif %}
+        {{ section.title }}
+        </h1>
+    </header>
+
+    <ul>
+        {% for page in section.pages %}
+        <li><a href="{{ page.permalink | safe }}">{{ page.title }}</a></li>
+        {% endfor %}
+    </ul>
+
+{% endblock content %}

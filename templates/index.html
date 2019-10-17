@@ -1,4 +1,5 @@
 {% import "post_macros.html" as post_macros %}
+{% import "partials.html" as partials %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -64,6 +65,10 @@
                 </nav>
             </main>
         {% endblock content %}
+
+        {% block footer %}
+            {{ partials::powered_by() }}
+        {% endblock footer %}
     </body>
 
 </html>
