@@ -1,5 +1,6 @@
 {% extends "index.html" %}
 {% import "post_macros.html" as post_macros %}
+{% import "partials.html" as partials %}
 
 {% block content %}
 {% block header %}
@@ -55,6 +56,12 @@
             </p>
         </footer>
     {% endblock page_footer %}
+
+    {% block disqus %}
+        {% if page.extra.disqus %}
+            {{ partials::disqus() }}
+        {% endif %}
+    {% endblock disqus %}
 </article>
 
 {% endblock content %}
