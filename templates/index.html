@@ -48,21 +48,21 @@
                         <h1>{{ config.extra.after_dark_title }}</h1>
                     </header>
                 {% endif %}
-                {% for page in paginator.pages %}
-                    {{ post_macros::page_in_list(page=page) }}
-                {% endfor %}
-
-                <nav>
-                  <p>
-                    {% if paginator.previous %}
-                      <a href="{{ paginator.previous }}">&laquo; Previous</a> |
-                    {% endif %}
-                    <span>Page {{ paginator.current_index }} of {{ paginator.number_pagers }}</span>
-                    {% if paginator.next %}
-                      | <a href="{{ paginator.next }}">Next &raquo;</a>
-                    {% endif %}
-                  </p>
-                </nav>
+                
+                <section>
+                    <h2>What do we have here?</h2>
+                    
+                    <ul>
+                        {% for item in config.extra.landing %}
+                            <li>
+                                <a temprop="url" class="active" href='{{ item.url | safe | replace(from="$BASE_URL", to=config.base_url) }}'>
+                                    {{ item.name }}
+                                </a>
+                                {{ item.desc }}
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </section>
             </main>
         {% endblock content %}
 
